@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               dir('backend') {
+               dir('/backend') {
                     // Run npm install to install dependencies
                     sh 'npm install'
                     // Execute any backend-specific build steps here
