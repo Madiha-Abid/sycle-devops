@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-           RUN 'npm install'
+           sh 'npm install'
         }
     }
   }
