@@ -9,9 +9,9 @@ pipeline {
         CI = 'true' 
     }
     stages {
-        stage('Build') {
+        stage('Build and Start Containers') {
             steps {
-                sh 'docker-compose up --build -d'
+                sh 'docker-compose up'
             }
         }
     }
