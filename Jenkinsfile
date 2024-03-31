@@ -1,10 +1,17 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            // Use a Node.js-based Docker image with npm installed
+            image 'node:latest'
+        }
+    }
     stages {
-        stage('Build') { 
+        stage('Install Dependencies') {
             steps {
-                sh 'npm install' 
+                // Execute npm install
+                sh 'npm install'
             }
         }
+        // Add additional stages as needed
     }
 }
