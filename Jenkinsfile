@@ -8,7 +8,13 @@ pipeline {
     environment {
         CI = 'true' 
     }
+    
     stages {
+         stage('Initialize'){
+        def dockerHome = tool 'Docker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
+
         stage('Build and Start Containers') {
             steps {
                 sh 'docker --version'
