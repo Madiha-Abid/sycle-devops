@@ -1,0 +1,42 @@
+services:
+  # Container for MongoDB
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: SystainCycle
+      MONGO_INITDB_ROOT_PASSWORD: SC12345678
+
+  # Container for the Node.js backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend_c
+    ports:
+      - "3005:3005"
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb+srv://SystainCycle:SC12345678@cluster0.dytrxzh.mongodb.net/sycle
+
+  # Container for the React frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend_c
+    stdin_open: true
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_API_URL: http://localhost:5173
+
+volumes:
+  mongodb_data:
