@@ -23,7 +23,7 @@ pipeline {
                 dir('backend') {
                     script {
                         // Define Docker build command
-                        def dockerBuildCmd = "docker build -t <none> ."
+                        def dockerBuildCmd = "docker build ."
                         // Execute Docker build
                         sh dockerBuildCmd
                     }
