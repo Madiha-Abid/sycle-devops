@@ -28,6 +28,7 @@ pipeline {
                     sh dockerBuildCmd
                 }
             }
+        }
         
 
         // stage('Build Docker Images') {
