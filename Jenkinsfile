@@ -32,7 +32,7 @@ pipeline {
                 dir('backend') {
                     script {
                         // Define Docker build command
-                        def dockerBuildCmd = "docker build -t madihaabid/devops-backend ."
+                        def dockerBuildCmd = "docker build -t madihaabid/devops-backend1 ."
                         // Execute Docker build
                         sh dockerBuildCmd
                     }
@@ -59,7 +59,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'madihaabid', variable: 'dockerhubpwd')]) {
                    sh 'docker login -u madihaabid -p ${dockerhubpwd}'
                     }
-                   sh 'docker push madihaabid/devops-backend'
+                   sh 'docker push madihaabid/devops-backend1'
                 }
             }
         }
