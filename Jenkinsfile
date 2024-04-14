@@ -3,9 +3,6 @@ pipeline {
         docker {
             image 'node:21-alpine'
             args '-p 3000:3000'
-
-            image '<none>:<none>'
-            args '-p 3005:3005'
         }
         
     }
@@ -26,7 +23,7 @@ pipeline {
                 dir('backend') {
                     script {
                         // Define Docker build command
-                        def dockerBuildCmd = "docker run -d -p 3005:3005 6ac1debeda84"
+                        def dockerBuildCmd = "docker build -t <none> ."
                         // Execute Docker build
                         sh dockerBuildCmd
                     }
