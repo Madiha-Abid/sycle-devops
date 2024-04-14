@@ -17,16 +17,29 @@ pipeline {
             }
         }
 
-        stage('Build Docker Images') {
+        stage('Build Docker Image') {
             steps {
                 script {
-                    // Define Docker Compose command to build images
-                    def dockerComposeBuild = "docker-compose build"
-                    // Execute Docker Compose build
-                    sh dockerComposeBuild
+                    // Define the Dockerfile directory
+                    def dockerfilePath = "backend"
+                    // Define Docker build command
+                    def dockerBuildCmd = "docker build -t devops-backend:${BUILD_NUMBER} ${dockerfilePath}"
+                    // Execute Docker build
+                    sh dockerBuildCmd
                 }
             }
-        }
+        
+
+        // stage('Build Docker Images') {
+        //     steps {
+        //         script {
+        //             // Define Docker Compose command to build images
+        //             def dockerComposeBuild = "docker-compose build"
+        //             // Execute Docker Compose build
+        //             sh dockerComposeBuild
+        //         }
+        //     }
+        // }
 
     }
 
