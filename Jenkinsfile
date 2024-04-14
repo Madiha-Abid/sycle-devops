@@ -13,7 +13,7 @@ pipeline {
         stage('Run Docker'){
             steps{
                 // sh 'npm install'
-                sh 'node --version'
+                sh 'docker --version'
             }
         }
 
