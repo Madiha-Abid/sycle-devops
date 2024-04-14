@@ -3,11 +3,11 @@ pipeline {
         docker {
             image 'node:21-alpine'
             args '-p 3000:3000'
-        }
-        docker {
+
             image '<none>:<none>'
             args '-p 3005:3005'
         }
+        
     }
     environment {
         CI = 'true' 
