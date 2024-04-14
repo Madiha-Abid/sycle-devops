@@ -16,9 +16,8 @@ pipeline {
                 sh 'node --version'
             }
         }
-    }
 
-    stage('Build Docker Images') {
+        stage('Build Docker Images') {
             steps {
                 script {
                     // Define Docker Compose command to build images
@@ -28,6 +27,8 @@ pipeline {
                 }
             }
         }
+
+    }
 
     // stages {
     //      stage('Initialize'){
