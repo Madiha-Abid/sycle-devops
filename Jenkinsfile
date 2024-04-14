@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'test:test'
-            args '-p 3000:3000'
+            image '<none>:<none>'
+            args '-p 3005:3005'
         }
     }
     environment {
