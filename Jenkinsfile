@@ -40,6 +40,19 @@ pipeline {
             }
         }
 
+        stage('Build Frontend Docker Image') {
+            steps {
+                dir('frontend') {
+                    script {
+                        // Define Docker build command
+                        def dockerBuildCmd = "docker build -t devops-frontend ."
+                        // Execute Docker build
+                        sh dockerBuildCmd
+                    }
+                }
+            }
+        }
+
         stage('Push Backend Docker Image to DockerHub'){
             steps{
                 script{
