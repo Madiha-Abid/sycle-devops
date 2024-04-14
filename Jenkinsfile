@@ -45,7 +45,7 @@ pipeline {
                 dir('frontend') {
                     script {
                         // Define Docker build command
-                        def dockerBuildCmd = "docker build -t devops-frontend ."
+                        def dockerBuildCmd = "docker build -t madihaabid/devops-frontend ."
                         // Execute Docker build
                         sh dockerBuildCmd
                     }
@@ -60,6 +60,17 @@ pipeline {
                    sh 'docker login -u madihaabid -p ${dockerhubpwd}'
                     }
                    sh 'docker push madihaabid/devops-backend'
+                }
+            }
+        }
+
+        stage('Push Frontend Docker Image to DockerHub'){
+            steps{
+                script{
+                withCredentials([string(credentialsId: 'madihaabid', variable: 'dockerhubpwd')]) {
+                   sh 'docker login -u madihaabid -p ${dockerhubpwd}'
+                    }
+                   sh 'docker push madihaabid/devops-frontend'
                 }
             }
         }
