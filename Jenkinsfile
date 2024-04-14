@@ -10,9 +10,10 @@ pipeline {
     }
     
     stages{
-        stage('Build'){
+        stage('Run Docker'){
             steps{
-                sh 'npm install'
+                // sh 'npm install'
+                sh 'node --version'
             }
         }
     }
