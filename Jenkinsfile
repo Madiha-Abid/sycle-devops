@@ -17,6 +17,18 @@ pipeline {
             }
         }
     }
+
+    stage('Build Docker Images') {
+            steps {
+                script {
+                    // Define Docker Compose command to build images
+                    def dockerComposeBuild = "docker-compose build"
+                    // Execute Docker Compose build
+                    sh dockerComposeBuild
+                }
+            }
+        }
+
     // stages {
     //      stage('Initialize'){
     //         steps{
