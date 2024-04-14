@@ -13,11 +13,16 @@ spec:
         app: spring-boot-k8s
     spec:
       containers:
-        - name: spring-boot-k8s
+        - name: spring-boot-k8s-backend
           image: madihaabid/devops-backend1 # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3005 # The port that the container is running on in the cluster
+        - name: spring-boot-k8s-frontend
+          image: madihaabid/devops-frontend
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5173
 
 
 ---
@@ -33,4 +38,7 @@ spec:
     - protocol: "TCP"
       port: 3005 # The port that the service is running on in the cluster
       targetPort: 3005 # The port exposed by the service
+    - protocol: "TCP"
+      port: 5173
+      targetPort: 5173
   type: NodePort # type of the service.
