@@ -35,10 +35,12 @@ spec:
   selector:
     app: spring-boot-k8s
   ports:
-    - protocol: "TCP"
+    - name: backend-port
+      protocol: "TCP"
       port: 3005 # The port that the service is running on in the cluster
       targetPort: 3005 # The port exposed by the service
-    - protocol: "TCP"
+    - name: frontend-port
+      protocol: "TCP"
       port: 5173
       targetPort: 5173
   type: NodePort # type of the service.
