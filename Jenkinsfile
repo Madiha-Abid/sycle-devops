@@ -43,6 +43,12 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
+            }
+        }
+
         stage('Push Backend Docker Image to DockerHub'){
             steps{
                 script{
