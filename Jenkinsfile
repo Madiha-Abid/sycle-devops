@@ -46,7 +46,7 @@ pipeline {
                 //         sh runTest
                 //     }
                 // }
-                sh './test.sh'
+                sh 'test.sh'
             }
 
         }
