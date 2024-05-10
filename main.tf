@@ -13,7 +13,7 @@ provider "kubernetes" {
 
 resource "kubernetes_namespace" "sycle" {
   metadata {
-    name = "example-namespace"
+    name = "kube_sycle"
   }
 }
 
