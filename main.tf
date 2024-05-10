@@ -11,7 +11,7 @@ provider "kubernetes" {
   config_path = "~/.kube/config"
 }
 
-resource "kubernetes_namespace" "example" {
+resource "kubernetes_namespace" "sycle" {
   metadata {
     name = "example-namespace"
   }
@@ -20,7 +20,7 @@ resource "kubernetes_namespace" "example" {
 resource "kubernetes_deployment" "spring_boot_k8s_deployment" {
   metadata {
     name      = "spring-boot-k8s-deployment-devops"
-    namespace = kubernetes_namespace.example.metadata[0].name
+    namespace = kubernetes_namespace.sycle.metadata[0].name
   }
 
   spec {
@@ -67,7 +67,7 @@ resource "kubernetes_deployment" "spring_boot_k8s_deployment" {
 resource "kubernetes_service" "spring_boot_k8s_service" {
   metadata {
     name      = "springboot-k8ssvc"
-    namespace = kubernetes_namespace.example.metadata[0].name
+    namespace = kubernetes_namespace.sycle.metadata[0].name
   }
 
   spec {
