@@ -81,28 +81,13 @@ pipeline {
             }
         }
 
-        stage('Terraform Init') {
-            steps {
-                sh 'terraform init'
+        stage('Deploy to k8s'){
+            steps{
+                script{
+                    kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8configpwd')
+                }
             }
         }
 
-        stage('Terraform Plan') {
-            steps {
-                sh 'terraform plan -out=tfplan'
-            }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-                sh 'terraform apply -input=false -auto-approve tfplan'
-            }
-        }
-    }
-
-    post {
-        always {
-            archiveArtifacts artifacts: '*.tfstate', allowEmptyArchive: true
-        }
     }
 }
