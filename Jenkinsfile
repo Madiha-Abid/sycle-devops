@@ -38,9 +38,15 @@ pipeline {
         }
 
         stage('Test') {
-            steps {
-                sh './jenkins/scripts/test.sh'
-            }
+            // steps {
+            //     sh './jenkins/scripts/test.sh'
+            // }
+            dir('jenkins') {
+                    script {
+                        def runTest = './scripts/test.sh'
+                        sh runTest
+                    }
+                }
         }
 
         stage('Push Backend Docker Image to DockerHub'){
