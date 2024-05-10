@@ -6,12 +6,20 @@ pipeline {
 
     environment {
         CI = 'true' 
+        SCANNER_HOME = tool 'sonar-scanner'
     }
     
     stages{
         stage('Build Node'){
             steps{
                 sh 'npm install'
+            }
+        }
+
+        stage('Sonar Analysis'){
+            steps{
+                sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.url=http://localhost:9000/ -Dsonar.login=squ_9fbc09de0b793ee5ccb305be7efe6341aafa597a -Dsonar.projectName=sycle-app \
+                    -Dsonar.projectKey=sycle-app -Dsonar.sources=. '''
             }
         }
 
